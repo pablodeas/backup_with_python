@@ -172,12 +172,12 @@ def main():
     
     args = parser.parse_args()
     
-    # Configura o diretório de logs
-    log_dir = os.path.join(args.pasta_destino, 'logs')
-    os.makedirs(log_dir, exist_ok=True)
-    
-    # Define nome do arquivo de log com data/hora se não especificado
     if not args.log:
+        # Configura o diretório de logs
+        log_dir = os.path.join(args.pasta_destino, 'logs')
+        os.makedirs(log_dir, exist_ok=True)
+
+        # Define nome do arquivo de log com data/hora se não especificado    
         timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
         log_file = os.path.join(log_dir, f"backup_{timestamp}.log")
     else:
@@ -206,7 +206,7 @@ def main():
     os.makedirs(args.pasta_destino, exist_ok=True)
     
     # Cria nome do arquivo de backup com data e hora atual
-    data_atual = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+    data_atual = datetime.datetime.now().strftime("%Y_%m_%d")
     nome_pasta = os.path.basename(os.path.normpath(args.pasta_origem))
     arquivo_backup = os.path.join(
         args.pasta_destino, 
